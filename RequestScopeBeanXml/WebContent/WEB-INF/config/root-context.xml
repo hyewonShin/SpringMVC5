@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	  
+	    <!-- xml방식의 bean객체 정의-->
+	    <!-- 위치 : WEB-INF -> config-> root-context -->
+	   	<bean class='kr.co.softcampus.beans.DataBean1' scope='request'/>			   
+	   	<bean class='kr.co.softcampus.beans.DataBean2' id = 'requestBean2' scope='request'/>			   
+
+<!-- Xml로 bean을 설정하고 byName으로 주입 받았을 경우에만 request 영역에 자동 저장된다.
+	so. Controller에서 model에 저장하지 않고 해당 데이터를 사용할 수 있다!!!! 
+		java설정에서와 같이 model에 저장해서 bean 객체 사용하려하면 에러남 ㅠㅠ -->
+
+		<!--
+		아래는 Java 방식에서의 bean 정의이다. 
+		(위치 : src -> RootAppContext.java)
+		 
+		 @Bean
+			@RequestScope  //새로운 요청이 주입됐을 때 bean이 주입됌.
+			public DataBean1 dataBean1() {
+				return new DataBean1();
+			} 
+		-->
+</beans>
